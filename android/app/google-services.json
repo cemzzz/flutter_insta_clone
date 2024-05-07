@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "336259545283",
+    "project_id": "instagram-sns",
+    "storage_bucket": "instagram-sns.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:336259545283:android:fd2874469025afb9064a76",
+        "android_client_info": {
+          "package_name": "com.example.instgram_clone"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDAxRyQAOssi-Nn73-AQgU42l9Sb0m-_wk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
