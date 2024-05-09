@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:instgram_clone/providers/auth_provider.dart';
 import 'package:instgram_clone/screens/feedUpload.dart';
-import 'package:instgram_clone/utils/logger.dart';
-import 'package:provider/provider.dart';
 
 
 class mainView extends StatefulWidget {

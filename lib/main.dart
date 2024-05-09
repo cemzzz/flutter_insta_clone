@@ -4,16 +4,18 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_state_notifier/flutter_state_notifier.dart';
-import 'package:instgram_clone/providers/auth_provider.dart';  // 별칭 없이 여기에 정의된 AuthProvider 사용
-import 'package:instgram_clone/providers/auth_state.dart';
+import 'package:instgram_clone/providers/auth/auth_provider.dart';  // 별칭 없이 여기에 정의된 AuthProvider 사용
+import 'package:instgram_clone/providers/auth/auth_state.dart';
+import 'package:instgram_clone/providers/feed/feedProvider.dart';
+import 'package:instgram_clone/providers/feed/feedState.dart';
 import 'package:instgram_clone/repositories/auth_repository.dart';
+import 'package:instgram_clone/repositories/feed_repository.dart';
+import 'package:instgram_clone/screens/login.dart';
 import 'package:instgram_clone/screens/mainView.dart';
-import 'package:instgram_clone/screens/sign.dart';
 import 'package:instgram_clone/screens/splash.dart';
 import 'package:provider/provider.dart';
 
 import 'firebase_options.dart';
-import 'screens/login.dart';
 
 
 void main() async{
@@ -39,6 +41,12 @@ class MyApp extends StatelessWidget {
                 firebaseFirestore: FirebaseFirestore.instance,
             )
         ),
+        Provider<FeedRepository>(
+          create: (context) => FeedRepository(
+            firebaseStorage: FirebaseStorage.instance,
+            firebaseFirestore: FirebaseFirestore.instance,
+          )
+        ),
         StreamProvider<User?>(
           create: (context) => FirebaseAuth.instance.authStateChanges(),
           initialData: null,
@@ -46,6 +54,9 @@ class MyApp extends StatelessWidget {
         StateNotifierProvider<AuthProviders, AuthState>(
          create: (context) => AuthProviders(),
         ),
+        StateNotifierProvider<FeedProvider, FeedState>(
+          create: (context) => FeedProvider(),
+        )
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
@@ -61,7 +72,7 @@ class MainScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return mainView();
+    return Splash();
   }
 }
 

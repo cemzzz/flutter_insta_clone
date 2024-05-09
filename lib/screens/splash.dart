@@ -1,7 +1,7 @@
 
 
 import 'package:flutter/material.dart';
-import 'package:instgram_clone/providers/auth_state.dart';
+import 'package:instgram_clone/providers/auth/auth_state.dart';
 import 'package:instgram_clone/screens/login.dart';
 import 'package:instgram_clone/screens/mainView.dart';
 import 'package:provider/provider.dart';

@@ -3,7 +3,7 @@ import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:instgram_clone/providers/auth_provider.dart';
+import 'package:instgram_clone/providers/auth/auth_provider.dart';
 import 'package:instgram_clone/screens/login.dart';
 import 'package:instgram_clone/widgets/errorDialog.dart';
 import 'package:provider/provider.dart';
@@ -21,11 +21,11 @@ class SignUp extends StatefulWidget {
 }
 
 class _SignUpState extends State<SignUp> {
-  GlobalKey<FormState> _globalKey =  GlobalKey<FormState>();
+  final GlobalKey<FormState> _globalKey =  GlobalKey<FormState>();
   //검증 로직을 위한거
-  TextEditingController _emailConfirm = TextEditingController(); //이메일 확인용
-  TextEditingController _nameConfirm = TextEditingController(); //이름 확인용
-  TextEditingController _pwdConfirm = TextEditingController(); //비밀번호 확인용
+  final TextEditingController _emailConfirm = TextEditingController(); //이메일 확인용
+  final TextEditingController _nameConfirm = TextEditingController(); //이름 확인용
+  final TextEditingController _pwdConfirm = TextEditingController(); //비밀번호 확인용
 
   AutovalidateMode _autovalidateMode = AutovalidateMode.disabled; //첫 검증은 우선 off
   //갤러리에서 사진가져오기 위한 거
@@ -33,7 +33,7 @@ class _SignUpState extends State<SignUp> {
   bool _isEnabled = true;
 
   Future<void> selectImage() async{
-    ImagePicker imagePicker = new ImagePicker();
+    ImagePicker imagePicker = ImagePicker();
     XFile? file = await imagePicker.pickImage(
       source: ImageSource.gallery,
       maxHeight: 512,
@@ -225,11 +225,11 @@ class _SignUpState extends State<SignUp> {
                           errorDialog(context, e);
                         }
                       } : null,
-                      child: Text('회원가입'),
                       style: ElevatedButton.styleFrom(
                         textStyle: TextStyle(fontSize: 20),
                         padding: EdgeInsets.all(15),
                       ),
+                      child: Text('회원가입'),
                     ),
                     SizedBox(height: 10,),
                     //로그인 화면 이동

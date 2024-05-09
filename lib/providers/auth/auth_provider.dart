@@ -3,7 +3,7 @@ import 'dart:typed_data';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_state_notifier/flutter_state_notifier.dart';
 import 'package:instgram_clone/exceptions/exception.dart';
-import 'package:instgram_clone/providers/auth_state.dart';
+import 'package:instgram_clone/providers/auth/auth_state.dart';
 import 'package:instgram_clone/repositories/auth_repository.dart';
 import 'package:provider/provider.dart';
 

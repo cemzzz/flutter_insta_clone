@@ -72,7 +72,7 @@ class AuthRepository{
       await userCredential.user!.sendEmailVerification();
 
       //프로필 이미지 저장
-      String? downloadURL = null;
+      String? downloadURL;
 
       if(profileImage != null){
         Reference ref = firebaseStorage.ref().child('profile').child(uid);
