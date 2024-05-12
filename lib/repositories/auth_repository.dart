@@ -87,8 +87,8 @@ class AuthRepository{
             'name' : name,
             'profileImage' : downloadURL,
             'feedCount' : 0,
-            'like' : [],
-            'follwers' : [],
+            'likes' : [],
+            'followers' : [],
             'following' : [],
           }
       );

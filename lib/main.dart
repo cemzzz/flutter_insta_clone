@@ -8,8 +8,11 @@ import 'package:instgram_clone/providers/auth/auth_provider.dart';  // 별칭 �
 import 'package:instgram_clone/providers/auth/auth_state.dart';
 import 'package:instgram_clone/providers/feed/feedProvider.dart';
 import 'package:instgram_clone/providers/feed/feedState.dart';
+import 'package:instgram_clone/providers/profile/profile_provider.dart';
+import 'package:instgram_clone/providers/profile/profile_state.dart';
 import 'package:instgram_clone/repositories/auth_repository.dart';
 import 'package:instgram_clone/repositories/feed_repository.dart';
+import 'package:instgram_clone/repositories/profile_repository.dart';
 import 'package:instgram_clone/screens/login.dart';
 import 'package:instgram_clone/screens/mainView.dart';
 import 'package:instgram_clone/screens/splash.dart';
@@ -47,6 +50,11 @@ class MyApp extends StatelessWidget {
             firebaseFirestore: FirebaseFirestore.instance,
           )
         ),
+        Provider<ProfileRepository>(
+          create: (context) => ProfileRepository(
+              firebaseFirestore: FirebaseFirestore.instance,
+          ),
+        ),
         StreamProvider<User?>(
           create: (context) => FirebaseAuth.instance.authStateChanges(),
           initialData: null,
@@ -56,7 +64,10 @@ class MyApp extends StatelessWidget {
         ),
         StateNotifierProvider<FeedProvider, FeedState>(
           create: (context) => FeedProvider(),
-        )
+        ),
+        StateNotifierProvider<ProfileProvider, ProfileState>(
+          create: (context)=> ProfileProvider(),
+        ),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

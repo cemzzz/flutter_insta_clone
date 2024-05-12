@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:instgram_clone/screens/feedUpload.dart';
+import 'package:instgram_clone/screens/feedView.dart';
+import 'package:instgram_clone/screens/profileView.dart';
 
 
 class mainView extends StatefulWidget {
@@ -25,17 +27,30 @@ class _mainViewState extends State<mainView> with SingleTickerProviderStateMixin
   }
 
   @override
+  void dispose() {
+    // TODO: implement dispose
+    tabController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body:  TabBarView(
         controller: tabController,
         physics: NeverScrollableScrollPhysics(),
         children: [
-          FeedUpload(),
+          FeedView(),
           Center(child: Text('2'),),
-          Center(child: Text('3'),),
+          FeedUpload(
+            onFeedUploaded: () {
+              setState(() {
+                tabController.index = 0;
+              });
+            },
+          ),
           Center(child: Text('4'),),
-          Center(child: Text('5'),),
+          profileView(),
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
