@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:instgram_clone/models/userModel.dart';
+import 'package:instgram_clone/screens/profileView.dart';
 
 class AvatarWidget extends StatelessWidget {
   final UserModel userModel;
@@ -8,11 +9,23 @@ class AvatarWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CircleAvatar(
-      backgroundImage: userModel.profileImage == null
-          ? AssetImage('assets/profileBasic.png') as ImageProvider :
-      NetworkImage(userModel.profileImage!),
-      radius: 18,
+    return GestureDetector(
+      onTap: (){
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (context) => profileView(
+                uid: userModel.uid,
+              ),
+          ),
+        );
+      },
+      child: CircleAvatar(
+        backgroundImage: userModel.profileImage == null
+            ? AssetImage('assets/profileBasic.png') as ImageProvider :
+        NetworkImage(userModel.profileImage!),
+        radius: 18,
+      ),
     );
   }
 }

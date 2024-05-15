@@ -47,6 +47,7 @@ dependencies:
   uuid: ^4.0.0
   logger: ^2.0.2
   carousel_slider: ^4.2.1
+  extended_image: ^8.1.0
 
 dev_dependencies:
   flutter_test:

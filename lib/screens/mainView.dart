@@ -1,7 +1,13 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:instgram_clone/exceptions/exception.dart';
+import 'package:instgram_clone/providers/user/user_provider.dart';
 import 'package:instgram_clone/screens/feedUpload.dart';
 import 'package:instgram_clone/screens/feedView.dart';
+import 'package:instgram_clone/screens/likeView.dart';
 import 'package:instgram_clone/screens/profileView.dart';
+import 'package:instgram_clone/widgets/errorDialog.dart';
+import 'package:provider/provider.dart';
 
 
 class mainView extends StatefulWidget {
@@ -18,6 +24,7 @@ class _mainViewState extends State<mainView> with SingleTickerProviderStateMixin
   void initState(){
     super.initState();
     tabController = TabController(length: 5, vsync: this);
+    _getProfile();
   }
 
   void bottomNavigationItemOnTab(int index){
@@ -31,6 +38,14 @@ class _mainViewState extends State<mainView> with SingleTickerProviderStateMixin
     // TODO: implement dispose
     tabController.dispose();
     super.dispose();
+  }
+
+  Future<void> _getProfile() async {
+    try{
+      await context.read<UserProvider>().getUserInfo();
+    } on CustomException catch(e) {
+      errorDialog(context, e);
+    }
   }
 
   @override
@@ -49,8 +64,10 @@ class _mainViewState extends State<mainView> with SingleTickerProviderStateMixin
               });
             },
           ),
-          Center(child: Text('4'),),
-          profileView(),
+          LikeView(),
+          profileView(
+            uid: context.read<User>().uid,
+          ),
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(

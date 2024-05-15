@@ -8,10 +8,15 @@ import 'package:instgram_clone/providers/auth/auth_provider.dart';  // 별칭 �
 import 'package:instgram_clone/providers/auth/auth_state.dart';
 import 'package:instgram_clone/providers/feed/feedProvider.dart';
 import 'package:instgram_clone/providers/feed/feedState.dart';
+import 'package:instgram_clone/providers/like/like_provider.dart';
+import 'package:instgram_clone/providers/like/like_state.dart';
 import 'package:instgram_clone/providers/profile/profile_provider.dart';
 import 'package:instgram_clone/providers/profile/profile_state.dart';
+import 'package:instgram_clone/providers/user/user_provider.dart';
+import 'package:instgram_clone/providers/user/user_state.dart';
 import 'package:instgram_clone/repositories/auth_repository.dart';
 import 'package:instgram_clone/repositories/feed_repository.dart';
+import 'package:instgram_clone/repositories/like_repository.dart';
 import 'package:instgram_clone/repositories/profile_repository.dart';
 import 'package:instgram_clone/screens/login.dart';
 import 'package:instgram_clone/screens/mainView.dart';
@@ -19,7 +24,6 @@ import 'package:instgram_clone/screens/splash.dart';
 import 'package:provider/provider.dart';
 
 import 'firebase_options.dart';
-
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
@@ -55,6 +59,11 @@ class MyApp extends StatelessWidget {
               firebaseFirestore: FirebaseFirestore.instance,
           ),
         ),
+        Provider<LikeRepository>(
+          create: (context) => LikeRepository(
+            firebaseFirestore: FirebaseFirestore.instance,
+          ),
+        ),
         StreamProvider<User?>(
           create: (context) => FirebaseAuth.instance.authStateChanges(),
           initialData: null,
@@ -62,11 +71,17 @@ class MyApp extends StatelessWidget {
         StateNotifierProvider<AuthProviders, AuthState>(
          create: (context) => AuthProviders(),
         ),
+        StateNotifierProvider<UserProvider, UserState>(
+          create: (context) => UserProvider(),
+        ),
         StateNotifierProvider<FeedProvider, FeedState>(
           create: (context) => FeedProvider(),
         ),
         StateNotifierProvider<ProfileProvider, ProfileState>(
           create: (context)=> ProfileProvider(),
+        ),
+        StateNotifierProvider<LikeProvider, LikeState>(
+          create: (context)=> LikeProvider(),
         ),
       ],
       child: MaterialApp(
