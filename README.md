@@ -20,3 +20,12 @@
 <li>좋아요 및 좋아요 리스트 구현</li>
 
 
+<h4> 회원가입 </h4>
+![image](https://github.com/cemzzz/flutter_insta_clone/assets/153144018/891c6b1e-2abd-4da1-8e97-dbf61cf72f64)
+
+<h4> 로그인 </h4>
+<h4>메인</h4>
+<h4>게시글 업로드</h4>
+<h4>프로필 </h4>
+
+
