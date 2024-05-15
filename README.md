@@ -37,7 +37,7 @@
   <img width="25%" src="https://github.com/cemzzz/flutter_insta_clone/assets/153144018/62f1408f-752f-428f-8310-fd2ea3ef5e5d"/> 
 </div> 
 
-<h4>좋아요 업로드</h4>
+<h4>좋아요 게시물 리스트</h4>
 <div>
   <img width="25%" src="https://github.com/cemzzz/flutter_insta_clone/assets/153144018/bb6c4e81-c5a9-4d71-aba6-23eddb909d18"/> 
 </div> 
