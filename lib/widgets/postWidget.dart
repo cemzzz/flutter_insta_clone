@@ -11,6 +11,7 @@ import 'package:instgram_clone/providers/like/like_provider.dart';
 import 'package:instgram_clone/providers/profile/profile_provider.dart';
 import 'package:instgram_clone/providers/user/user_provider.dart';
 import 'package:instgram_clone/providers/user/user_state.dart';
+import 'package:instgram_clone/screens/commentView.dart';
 import 'package:instgram_clone/widgets/avatarWidget.dart';
 import 'package:instgram_clone/widgets/errorDialog.dart';
 import 'package:instgram_clone/widgets/heartAnimation.dart';
@@ -29,6 +30,7 @@ class FeedWidget extends StatefulWidget {
   @override
   State<FeedWidget> createState() => _FeedWidgetState();
 }
+
 
 class _FeedWidgetState extends State<FeedWidget> {
   final CarouselController carouselController = CarouselController();
@@ -142,7 +144,6 @@ class _FeedWidgetState extends State<FeedWidget> {
     } on CustomException catch (e) {
       errorDialog(context, e);
     }
-
    }
 
   @override
@@ -206,10 +207,18 @@ class _FeedWidgetState extends State<FeedWidget> {
                 ),
 
                 SizedBox(width: 10,),
-
-                Icon(
-                  Icons.comment_outlined,
-                  color: Colors.white,
+                GestureDetector(
+                  onTap: (){
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => CommnetView(feedId: feedModel.feedId),
+                        ));
+                  },
+                  child: Icon(
+                    Icons.comment_outlined,
+                    color: Colors.white,
+                  ),
                 ),
                 SizedBox(width: 5,),
                 Text(

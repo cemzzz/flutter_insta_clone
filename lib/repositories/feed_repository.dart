@@ -176,4 +176,29 @@ class FeedRepository {
     });
   }
 
+  Future<FeedModel> getFeed(String feedId) async {
+    try {
+      DocumentSnapshot<Map<String, dynamic>> snapshot = await firebaseFirestore.collection('feeds').doc(feedId).get();
+      if (!snapshot.exists) {
+        throw Exception("피드를 찾지 못했습니다.");
+      }
+
+      Map<String, dynamic> data = snapshot.data()!;
+      DocumentReference<Map<String, dynamic>> writerDocRef = data['writer'];
+      DocumentSnapshot<Map<String, dynamic>> writerSnapshot = await writerDocRef.get();
+      UserModel userModel = UserModel.fromMap(writerSnapshot.data()!);
+      data['writer'] = userModel;
+
+      return FeedModel.fromMap(data);
+    } on FirebaseException catch (e) {
+      throw CustomException(
+          code: e.code,
+          message: e.message ?? "An unknown Firebase exception occurred."
+      );
+    } catch (e) {
+      throw Exception('Error fetching feed: ${e.toString()}');
+    }
+  }
+
+
 }

@@ -33,7 +33,7 @@ class FeedModel{
       'post': this.post,
       'imageUrls': this.imageUrls,
       'likes': this.likes,
-      'commnetCount': this.commentCount,
+      'commentCount': this.commentCount,
       'likeCount': this.likeCount,
       'CreateAt': this.CreateAt,
       'writer': userDocRef,

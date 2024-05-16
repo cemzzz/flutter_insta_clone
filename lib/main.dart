@@ -6,6 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_state_notifier/flutter_state_notifier.dart';
 import 'package:instgram_clone/providers/auth/auth_provider.dart';  // 별칭 없이 여기에 정의된 AuthProvider 사용
 import 'package:instgram_clone/providers/auth/auth_state.dart';
+import 'package:instgram_clone/providers/comment/comment_provider.dart';
+import 'package:instgram_clone/providers/comment/comment_state.dart';
 import 'package:instgram_clone/providers/feed/feedProvider.dart';
 import 'package:instgram_clone/providers/feed/feedState.dart';
 import 'package:instgram_clone/providers/like/like_provider.dart';
@@ -15,6 +17,7 @@ import 'package:instgram_clone/providers/profile/profile_state.dart';
 import 'package:instgram_clone/providers/user/user_provider.dart';
 import 'package:instgram_clone/providers/user/user_state.dart';
 import 'package:instgram_clone/repositories/auth_repository.dart';
+import 'package:instgram_clone/repositories/comment_repository.dart';
 import 'package:instgram_clone/repositories/feed_repository.dart';
 import 'package:instgram_clone/repositories/like_repository.dart';
 import 'package:instgram_clone/repositories/profile_repository.dart';
@@ -64,6 +67,11 @@ class MyApp extends StatelessWidget {
             firebaseFirestore: FirebaseFirestore.instance,
           ),
         ),
+        Provider<CommentRepository>(
+          create: (context) => CommentRepository(
+            firebaseFirestore: FirebaseFirestore.instance,
+          ),
+        ),
         StreamProvider<User?>(
           create: (context) => FirebaseAuth.instance.authStateChanges(),
           initialData: null,
@@ -82,6 +90,9 @@ class MyApp extends StatelessWidget {
         ),
         StateNotifierProvider<LikeProvider, LikeState>(
           create: (context)=> LikeProvider(),
+        ),
+        StateNotifierProvider<CommentProvider, CommentState>(
+          create: (context)=> CommentProvider(),
         ),
       ],
       child: MaterialApp(

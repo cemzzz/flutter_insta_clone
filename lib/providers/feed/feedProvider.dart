@@ -10,6 +10,7 @@ import 'package:instgram_clone/repositories/feed_repository.dart';
 class FeedProvider extends StateNotifier<FeedState> with LocatorMixin{
   FeedProvider(): super(FeedState.init());
 
+
   Future<FeedModel> likeFeed({
     required String feedId,
     required List<String> feedLikes,
@@ -58,6 +59,17 @@ class FeedProvider extends StateNotifier<FeedState> with LocatorMixin{
       print("Error fetching feed list: $e");
       state = state.copyWith(feedStatus: FeedStatus.error);
       rethrow;
+    }
+  }
+
+  // FeedProvider 내에 메소드 추가
+  Future<int> fetchCommentCount(String feedId) async {
+    try {
+      FeedModel feed = await read<FeedRepository>().getFeed(feedId);
+      return feed.commentCount;
+    } catch (e) {
+      print('Error fetching comment count: $e');
+      return 0;
     }
   }
 
