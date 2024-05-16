@@ -9,7 +9,7 @@
 
  
 # 📑 프로젝트 수행절차
-<li>개발 기간: 24/5/4 ~ 24/5/15</li>
+<li>개발 기간: 24/5/4 ~ 24/5/16</li>
 <li>1인 개인 프로젝트</li>
 
 # 📌 프로젝트 기능 구현
@@ -18,6 +18,7 @@
 <li>프로필 화면 기능 구현</li>
 <li>게시글 업로드 기능 구현</li>
 <li>좋아요 및 좋아요 리스트 기능 구현</li>
+<li>댓글 구현</li>
 
 
 <h4> 로그인 및 회원 가입 </h4>
@@ -41,6 +42,12 @@
 <div>
   <img width="25%" src="https://github.com/cemzzz/flutter_insta_clone/assets/153144018/bb6c4e81-c5a9-4d71-aba6-23eddb909d18"/> 
 </div> 
+
+<h4>댓글 화면</h4>
+<div>
+  <img width="25%" src="https://github.com/cemzzz/flutter_insta_clone/assets/153144018/c288a978-2f3e-4630-9772-ed867d6fe9c1"/> 
+</div> 
+
 
 <h4>프로필 </h4>
 <div>
